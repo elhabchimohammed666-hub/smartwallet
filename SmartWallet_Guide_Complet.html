@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartWallet - Guide Complet d'Utilisation et de Gestion</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 15mm 15mm 15mm 15mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      font-size: 9.5pt;
+      background-color: #ffffff;
+    }
+
+    /* Page Breaks */
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .no-break {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      height: 98vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px 10px 10px 10px;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      border-radius: 9999px;
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cover-title {
+      font-size: 32pt;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+      margin-top: 20px;
+      letter-spacing: -1px;
+    }
+
+    .cover-title span {
+      color: #10b981;
+    }
+
+    .cover-subtitle {
+      font-size: 13pt;
+      color: #475569;
+      margin-top: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .cover-desc {
+      font-size: 10.5pt;
+      color: #64748b;
+      margin-top: 18px;
+      max-width: 95%;
+      line-height: 1.55;
+    }
+
+    .cover-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .cover-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .cover-card-item h4 {
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      color: #64748b;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .cover-card-item p {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 3px;
+    }
+
+    .cover-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5pt;
+      color: #94a3b8;
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #10b981;
+      letter-spacing: -0.5px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    h2 {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    h3 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 12px;
+      margin-bottom: 5px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 8px;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px dotted #cbd5e1;
+      font-size: 9.5pt;
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .toc-item.sub {
+      padding-left: 18px;
+      font-size: 8.5pt;
+      color: #475569;
+      font-weight: normal;
+      border-bottom: 1px dotted #e2e8f0;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    .toc-item span.num {
+      font-weight: 700;
+      color: #10b981;
+      margin-right: 6px;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 9pt;
+      border-left: 4px solid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .callout.tip {
+      background: #f0fdf4;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .callout.info {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1e40af;
+    }
+
+    .callout.warning {
+      background: #fffbeb;
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    .callout.danger {
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Code Blocks */
+    pre, code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 8pt;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin: 8px 0;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    code.inline {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 8.5pt;
+      border: 1px solid #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      text-align: left;
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 6px 10px;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* Step lists */
+    .step-list {
+      margin: 10px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 8.5pt;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h4 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .step-content p {
+      font-size: 8.5pt;
+      color: #475569;
+      margin-top: 2px;
+      margin-bottom: 0;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+    .badge-warning { background: #fef3c7; color: #b45309; }
+    .badge-info { background: #e0e7ff; color: #4338ca; }
+    .badge-danger { background: #fee2e2; color: #b91c1c; }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 8px;
+      color: #334155;
+      font-size: 9pt;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE DE GARDE ==================== -->
+  <div class="cover-page">
+    <div>
+      <span class="cover-badge">Manuel Officiel de Référence • Édition 2026</span>
+      <h1 class="cover-title">Smart<span>Wallet</span><br>Guide Complet d'Utilisation & de Gestion</h1>
+      <p class="cover-subtitle">Plateforme de Gestion Budgétaire Intelligente (Stack MERN, OCR Tesseract & Analyse IA)</p>
+      
+      <p class="cover-desc">
+        Ce guide fournit toutes les instructions opérationnelles, fonctionnelles et techniques pour installer, utiliser, exploiter et administrer l'application <strong>SmartWallet</strong> en parfaite conformité avec les spécifications du projet.
+      </p>
+
+      <div class="cover-card">
+        <div class="cover-card-grid">
+          <div class="cover-card-item">
+            <h4>Architecture</h4>
+            <p>MERN Full-Stack</p>
+          </div>
+          <div class="cover-card-item">
+            <h4>Moteur OCR</h4>
+            <p>Tesseract.js (ENG+FRA)</p>
+          </div>
+          <div class="cover-card-item">
+            <h4>Module IA</h4>
+            <p>Gemini & Moteur Expert</p>
+          </div>
+          <div class="cover-card-item">
+            <h4>Gestion Budgétaire</h4>
+            <p>Plafonds & Alertes (80%/100%)</p>
+          </div>
+          <div class="cover-card-item">
+            <h4>Épargne</h4>
+            <p>Objectifs Indépendants</p>
+          </div>
+          <div class="cover-card-item">
+            <h4>Devises</h4>
+            <p>MAD, USD, EUR, GBP, CAD</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <span>Projet SmartWallet • SmartWallet Team</span>
+      <span>Octobre 2026 • Document Version 1.0</span>
+    </div>
+  </div>
+
+  <!-- ==================== TABLE DES MATIÈRES ==================== -->
+  <div class="page-break">
+    <h1>Table des Matières</h1>
+    <div class="toc">
+      <div class="toc-item"><span class="num">1.</span> Présentation Générale de SmartWallet <span>Page 3</span></div>
+      <div class="toc-item sub">1.1 Objectifs Clés et Périmètre Fonctionnel</div>
+      <div class="toc-item sub">1.2 Ce que l'application fait (et ne fait pas)</div>
+      
+      <div class="toc-item"><span class="num">2.</span> Installation & Démarrage Rapide <span>Page 3</span></div>
+      <div class="toc-item sub">2.1 Prérequis Techniques</div>
+      <div class="toc-item sub">2.2 Configuration des Environnements (.env)</div>
+      <div class="toc-item sub">2.3 Lancement du Serveur Backend et du Client Frontend</div>
+      
+      <div class="toc-item"><span class="num">3.</span> Guide d'Utilisation Pas-à-Pas <span>Page 4</span></div>
+      <div class="toc-item sub">3.1 Authentification et Gestion du Profil</div>
+      <div class="toc-item sub">3.2 Tableau de Bord Financier Interactif</div>
+      <div class="toc-item sub">3.3 Gestion des Revenus, Dépenses et Export CSV</div>
+      <div class="toc-item sub">3.4 Budgets Mensuels et Système d'Alertes Actives</div>
+      <div class="toc-item sub">3.5 Objectifs d'Épargne sans Double Comptage</div>
+      <div class="toc-item sub">3.6 Scanner de Reçus par OCR & Confirmation Utilisateur</div>
+      <div class="toc-item sub">3.7 Rapports Mensuels IA en 5 Sections</div>
+      <div class="toc-item sub">3.8 Personnalisation des Catégories de Dépenses</div>
+
+      <div class="toc-item"><span class="num">4.</span> Le Scénario de Démonstration (Cas de Yassine) <span>Page 6</span></div>
+      <div class="toc-item sub">4.1 Utilisation du Bouton Démo en 1 Clic</div>
+      <div class="toc-item sub">4.2 Déroulé chronologique du cas d'évaluation</div>
+
+      <div class="toc-item"><span class="num">5.</span> Architecture Technique & Administration <span>Page 7</span></div>
+      <div class="toc-item sub">5.1 Modèles de Données Mongoose</div>
+      <div class="toc-item sub">5.2 API REST Express & Endpoints</div>
+      <div class="toc-item sub">5.3 Pipeline OCR & Moteur d'Analyse IA</div>
+
+      <div class="toc-item"><span class="num">6.</span> Guide de Déploiement en Production <span>Page 8</span></div>
+      <div class="toc-item"><span class="num">7.</span> Dépannage & FAQ <span>Page 8</span></div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-title">💡 Conseil Rapide pour l'Évaluation</div>
+      Pour une démonstration immédiate, connectez-vous et cliquez sur le bouton violet <strong>"Load PDF Demo"</strong> dans l'en-tête : toutes les données réalistes (salaire, budgets, ticket Marjane, épargne, rapport IA) seront instantanément chargées !
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 & 2 ==================== -->
+  <div class="page-break">
+    <h1>1. Présentation Générale de SmartWallet</h1>
+    <p>
+      <strong>SmartWallet</strong> est une application web moderne conçue pour permettre aux particuliers de maîtriser leur budget mensuel, catégoriser leurs transactions financières, se prémunir contre les dépassements de dépenses et faire fructifier leur épargne personnelle sans complexité inutile.
+    </p>
+
+    <h2>1.1 Objectifs Clés</h2>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Simplifier le suivi financier personnel</h4>
+          <p>Offrir une interface fluide et réactive pour saisir, catégoriser, rechercher et visualiser l'ensemble des flux d'argent.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Améliorer la conscience budgétaire</h4>
+          <p>Combiner des alertes en temps réel à 80% et 100% avec des rapports analytiques mensuels générés par Intelligence Artificielle.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Automatiser la saisie des reçus par OCR</h4>
+          <p>Éviter la saisie manuelle grâce à la reconnaissance optique de caractères (Tesseract.js) couplée à la suggestion de catégorie.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>1.2 Périmètre Fonctionnel</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 50%;">Fonctionnalités Incluses (In-Scope)</th>
+          <th style="width: 50%;">Hors Périmètre (Out-of-Scope)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Suivi rigoureux des revenus et dépenses personnels</td>
+          <td>Connexions bancaires ouvertes (Open Banking)</td>
+        </tr>
+        <tr>
+          <td>Plafonds budgétaires globaux et catégoriels mensuels</td>
+          <td>Virements de fonds ou transferts d'argent</td>
+        </tr>
+        <tr>
+          <td>Objectifs d'épargne avec suivi des versements indépendants</td>
+          <td>Passerelle de paiement en ligne ou cartes virtuelles</td>
+        </tr>
+        <tr>
+          <td>OCR de tickets de caisse & proposition de catégorie</td>
+          <td>Conseil financier d'investissement spéculatif</td>
+        </tr>
+        <tr>
+          <td>Rapports financiers mensuels IA stricts & historique</td>
+          <td>Multi-devises simultanées au sein d'un même compte</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout info">
+      <div class="callout-title">ℹ️ Règle d'Or de l'Épargne</div>
+      Verser de l'argent vers un objectif d'épargne (ex: 1 000 MAD vers l'objectif PC) <strong>ne compte pas comme une dépense</strong>. SmartWallet maintient une séparation stricte entre les dépenses et l'épargne pour éviter tout double-comptage.
+    </div>
+
+    <h1>2. Installation & Démarrage Rapide</h1>
+    <p>SmartWallet est structuré en deux parties : API Express (<code>server/</code>) et client React Vite (<code>client/</code>).</p>
+    <ul>
+      <li><strong>Prérequis</strong> : Node.js v18+, NPM v9+, MongoDB local sur <code>27017</code> (ou MongoDB Atlas).</li>
+      <li><strong>Configuration Backend</strong> : Fichier <code>server/.env</code> :</li>
+    </ul>
+    <pre><code>PORT=5001
+MONGODB_URI=mongodb://127.0.0.1:27017/smartwallet
+JWT_SECRET=smartwallet_super_secret_jwt_key_2026_finance_secure
+GEMINI_API_KEY=
+CLIENT_URL=http://localhost:5173
+NODE_ENV=development</code></pre>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">A</div>
+        <div class="step-content">
+          <h4>Lancer le Serveur Backend</h4>
+          <p>Exécutez dans un terminal : <code>cd server && npm run dev</code> (démarre sur <strong>http://localhost:5001</strong>).</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">B</div>
+        <div class="step-content">
+          <h4>Lancer le Client Frontend</h4>
+          <p>Exécutez dans un second terminal : <code>cd client && npm run dev</code> (accessible sur <strong>http://localhost:5173</strong>).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 (Partie 1) ==================== -->
+  <div class="page-break">
+    <h1>3. Guide d'Utilisation Pas-à-Pas</h1>
+
+    <h2>3.1 Inscription et Choix de la Devise</h2>
+    <p>
+      Sur <strong>http://localhost:5173</strong>, accédez à l'inscription via <em>"Register here"</em> :
+    </p>
+    <ul>
+      <li>Renseignez votre nom, email et mot de passe (6 caractères minimum).</li>
+      <li>Sélectionnez votre devise de référence : <strong>MAD</strong>, <strong>USD</strong>, <strong>EUR</strong>, <strong>GBP</strong> ou <strong>CAD</strong>.</li>
+      <li>Les catégories par défaut (Groceries, Transport, Dining, Salary...) sont automatiquement créées pour votre compte.</li>
+    </ul>
+
+    <h2>3.2 Le Tableau de Bord Financier (Dashboard)</h2>
+    <ul>
+      <li><strong>Cartes Métriques</strong> : Revenus totaux, Dépenses totales, Solde net disponible, et Pourcentage du budget utilisé.</li>
+      <li><strong>Bannières d'Alertes</strong> : Messages d'avertissement automatiques dès que le budget global ou une catégorie atteint 80% ou dépasse 100%.</li>
+      <li><strong>Graphique Donut Recharts</strong> : Répartition visuelle des dépenses par catégorie avec infobulles interactives.</li>
+      <li><strong>Barre de Progression Globale</strong> : Jauge en temps réel illustrant le montant restant et le statut (vert, orange, rouge).</li>
+      <li><strong>Dernières Transactions</strong> : Liste des mouvements récents avec badge d'accès direct au reçu scanné.</li>
+      <li><strong>Sélecteur de Mois</strong> : Permet de basculer sur n'importe quel mois pour consulter son historique.</li>
+    </ul>
+
+    <h2>3.3 Gestion des Revenus, Dépenses & Export CSV</h2>
+    <ul>
+      <li><strong>Ajout Manuel</strong> : Cliquez sur <em>"New Transaction"</em>, choisissez Dépense/Revenu, le montant, la catégorie, la date et la méthode de paiement.</li>
+      <li><strong>Filtres & Recherche</strong> : Filtrez par plage de dates, type ou catégorie, ou tapez un mot-clé dans la barre de recherche.</li>
+      <li><strong>Exportation CSV</strong> : Cliquez sur <em>"Export CSV"</em> pour télécharger l'historique complet compatible Excel.</li>
+      <li><strong>Visualisation de Reçu</strong> : Cliquez sur le bouton vert <em>"View"</em> pour ouvrir la photo originale du ticket.</li>
+    </ul>
+
+    <h2>3.4 Budgets Mensuels & Alertes Actives</h2>
+    <p>Sur l'écran <strong>Monthly Budgets</strong> :</p>
+    <ul>
+      <li><strong>Plafond Global</strong> : Limite globale mensuelle (ex: 4 000 MAD).</li>
+      <li><strong>Plafonds par Catégorie</strong> : Limites spécifiques (ex: 1 500 MAD Épicerie, 600 MAD Transport).</li>
+      <li><strong>Calculs Réels</strong> : Le système agrège les dépenses de transactions pour calculer la consommation en temps réel.</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Consommation</th>
+          <th>Statut</th>
+          <th>Comportement du Système</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Moins de 80%</td>
+          <td><span class="badge badge-success">Maîtrisé</span></td>
+          <td>Barre verte, solde disponible suffisant</td>
+        </tr>
+        <tr>
+          <td>Entre 80% et 99%</td>
+          <td><span class="badge badge-warning">Attention (Warning)</span></td>
+          <td>Bannière jaune d'avertissement proactive</td>
+        </tr>
+        <tr>
+          <td>100% et plus</td>
+          <td><span class="badge badge-danger">Dépassement (Exceeded)</span></td>
+          <td>Bannière rouge critique indiquant le montant excédentaire</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 (Partie 2) ==================== -->
+  <div class="page-break">
+    <h2>3.5 Objectifs d'Épargne Personnels (Savings Goals)</h2>
+    <p>Sur l'écran <strong>Savings Goals</strong> :</p>
+    <ul>
+      <li><strong>Créer un Objectif</strong> : Définissez un nom (ex: "Nouveau Laptop"), un montant cible (ex: 8 000 MAD) et une date cible.</li>
+      <li><strong>Enregistrer un Versement</strong> : Cliquez sur <em>"Record Contribution"</em> pour allouer une somme (ex: 500 MAD).</li>
+      <li><strong>Garantie de Non-Double Comptage</strong> : L'épargne est dissociée des dépenses courantes pour préserver l'exactitude des bilans.</li>
+    </ul>
+
+    <h2>3.6 Scanner de Reçus par OCR & Validation Utilisateur</h2>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Téléversement du ticket</h4>
+          <p>Glissez-déposez l'image de votre reçu sur la zone dédiée (PNG, JPG, WEBP).</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Extraction Tesseract.js & Catégorisation IA</h4>
+          <p>Le serveur extrait le Commerçant (Marjane), la Date, le Montant Total (285.00 MAD) et suggère la catégorie (Groceries).</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Modale d'Inspection & Validation</h4>
+          <p>Une modale interactive s'affiche : vérifiez les champs, modifiez si besoin, puis cliquez sur <strong>"Confirm & Save Expense"</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>3.7 Rapports Mensuels par Intelligence Artificielle</h2>
+    <p>L'écran <strong>AI Monthly Reports</strong> génère une analyse financière experte en <strong>5 sections structurées</strong> :</p>
+    <div class="callout tip">
+      <div class="callout-title">🛡️ Règle de Fiabilité Absolue</div>
+      Tous les montants, totaux et pourcentages sont <strong>calculés mathématiquement par Express.js</strong> avant d'être transmis à l'IA. L'IA ne peut jamais inventer de chiffres financiers.
+    </div>
+    <ol>
+      <li><strong>Aperçu Mensuel (Monthly Overview)</strong> : Tableau chiffré des revenus, dépenses, taux d'épargne réel et état d'utilisation du budget global.</li>
+      <li><strong>Tendances de Dépenses (Spending Patterns)</strong> : Identification des catégories majeures et comparaison en pourcentage avec le mois précédent (ou notification explicite d'historique insuffisant).</li>
+      <li><strong>Points d'Attention Budgétaires (Budget Concerns)</strong> : Mise en exergue des catégories qui approchent ou dépassent leurs plafonds alloués.</li>
+      <li><strong>Observations Positives (Positive Observations)</strong> : Valorisation des catégories où les dépenses sont restées maîtrisées et de la capacité d'épargne maintenue.</li>
+      <li><strong>Recommandations Pratiques Chiffrées (Recommendations)</strong> : Conseils d'optimisation concrets basés sur vos montants réels.</li>
+    </ol>
+    <p><strong>Persistance</strong> : Chaque rapport est sauvegardé dans MongoDB et peut être réouvert immédiatement sans ré-exécuter l'IA.</p>
+
+    <h2>3.8 Gestion des Catégories de Dépenses</h2>
+    <ul>
+      <li>Consultez les catégories natives (Groceries, Transportation, Housing...).</li>
+      <li>Créez vos propres catégories personnalisées avec nom, type et couleur thématique.</li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 4 & 5 ==================== -->
+  <div class="page-break">
+    <h1>4. Le Scénario de Démonstration (Cas de Yassine)</h1>
+    <p>
+      La page 12 du sujet décrit l'histoire de <strong>Yassine</strong>. Cliquez sur <strong>"Load PDF Demo"</strong> dans l'en-tête pour charger instantanément ce scénario de référence :
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Étape</th>
+          <th>Action Réalisée dans le Scénario</th>
+          <th>Vérification dans l'Application</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Profil</strong></td>
+          <td>Configuration du compte avec devise <strong>MAD</strong></td>
+          <td>Badge MAD visible dans toute l'interface</td>
+        </tr>
+        <tr>
+          <td><strong>2. Revenus & Budget</strong></td>
+          <td>Salaire (9 000 MAD) et budget mensuel de <strong>4 000 MAD</strong> (Épicerie: 1 500 MAD, Transport: 600 MAD)</td>
+          <td>Page <em>Budgets</em> : jauges et plafonds correctement configurés</td>
+        </tr>
+        <tr>
+          <td><strong>3. Épargne PC</strong></td>
+          <td>Objectif de <strong>8 000 MAD</strong> pour le PC avec versement initial de 1 000 MAD</td>
+          <td>Page <em>Savings</em> : 1 500 MAD économisés (18.8%)</td>
+        </tr>
+        <tr>
+          <td><strong>4. Reçu Scanné</strong></td>
+          <td>Achat de courses au supermarché Marjane : <strong>285,00 MAD</strong> extrait par OCR Tesseract</td>
+          <td>Page <em>Receipts</em> : image Marjane et transaction Groceries liée</td>
+        </tr>
+        <tr>
+          <td><strong>5. Dashboard</strong></td>
+          <td>Le transport atteint 510 MAD / 600 MAD (85%), déclenchant l'alerte proactive</td>
+          <td>Page <em>Dashboard</em> : bannière jaune d'avertissement Transport</td>
+        </tr>
+        <tr>
+          <td><strong>6. Rapport IA</strong></td>
+          <td>Génération de l'analyse mensuelle comparée au mois précédent</td>
+          <td>Page <em>Reports</em> : rapport complet en 5 sections avec historique antérieur</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout tip">
+      <div class="callout-title">💡 Image de Reçu Échantillon Incluse</div>
+      Un ticket de caisse réel a été généré et stocké dans <code>server/uploads/receipts/sample-receipt.png</code>. Vous pouvez tester le scanner OCR en direct en téléversant cette image !
+    </div>
+
+    <h1>5. Architecture Technique & Administration</h1>
+
+    <h2>5.1 Modèles de Données Mongoose</h2>
+    <ul>
+      <li><strong>User</strong> : <code>name</code>, <code>email</code> (unique), <code>password</code> (haché bcrypt), <code>preferredCurrency</code> (MAD).</li>
+      <li><strong>Transaction</strong> : <code>user</code>, <code>type</code>, <code>amount</code>, <code>category</code>, <code>date</code>, <code>description</code>, <code>receipt</code>, <code>paymentMethod</code>, <code>notes</code>.</li>
+      <li><strong>Budget</strong> : <code>user</code>, <code>month</code>, <code>overallLimit</code>, <code>categoryLimits: [{ category, limit }]</code>. Index <code>{ user: 1, month: 1 }</code>.</li>
+      <li><strong>SavingsGoal</strong> : <code>user</code>, <code>name</code>, <code>targetAmount</code>, <code>currentAmount</code>, <code>targetDate</code>, <code>contributions</code>.</li>
+      <li><strong>Receipt</strong> : <code>user</code>, <code>imageUrl</code>, <code>originalFilename</code>, <code>ocrRawText</code>, <code>extractedData</code>, <code>status</code>.</li>
+      <li><strong>MonthlyReport</strong> : <code>user</code>, <code>month</code>, <code>statistics</code>, <code>aiAnalysis</code>, <code>aiModelUsed</code>.</li>
+    </ul>
+
+    <h2>5.2 Routes Clés de l'API REST Express</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Méthode</th>
+          <th>Endpoint</th>
+          <th>Rôle & Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>POST</code></td>
+          <td><code>/api/auth/register</code> & <code>/login</code></td>
+          <td>Authentification JWT & création de compte</td>
+        </tr>
+        <tr>
+          <td><code>GET / POST</code></td>
+          <td><code>/api/transactions</code></td>
+          <td>Recherche, filtres multi-critères, ajout dépense/revenu</td>
+        </tr>
+        <tr>
+          <td><code>GET</code></td>
+          <td><code>/api/transactions/export/csv</code></td>
+          <td>Exportation du fichier CSV des transactions</td>
+        </tr>
+        <tr>
+          <td><code>GET / POST</code></td>
+          <td><code>/api/budgets</code></td>
+          <td>Consultation et paramétrage du budget et des limites</td>
+        </tr>
+        <tr>
+          <td><code>GET / POST</code></td>
+          <td><code>/api/savings</code></td>
+          <td>Gestion des objectifs d'épargne</td>
+        </tr>
+        <tr>
+          <td><code>POST</code></td>
+          <td><code>/api/receipts/upload</code> & <code>/:id/confirm</code></td>
+          <td>Téléversement OCR et confirmation de dépense liée</td>
+        </tr>
+        <tr>
+          <td><code>POST / GET</code></td>
+          <td><code>/api/reports/generate</code> & <code>/:month</code></td>
+          <td>Génération et réouverture du rapport mensuel IA</td>
+        </tr>
+        <tr>
+          <td><code>POST</code></td>
+          <td><code>/api/demo/seed</code></td>
+          <td>Initialisation du scénario d'évaluation Yassine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ==================== CHAPITRE 6 & 7 ==================== -->
+  <div class="no-break">
+    <h1>6. Guide de Déploiement en Production</h1>
+    <p>SmartWallet est prêt pour un déploiement cloud gratuit selon les recommandations du sujet :</p>
+    <ul>
+      <li><strong>Base de Données (MongoDB Atlas)</strong> : Créez un cluster gratuit (M0 Free Tier), configurez l'utilisateur et l'accès réseau (0.0.0.0/0), puis insérez l'URI de connexion dans <code>MONGODB_URI</code>.</li>
+      <li><strong>Backend (Render ou Railway)</strong> : Liez votre dépôt GitHub, définissez le répertoire racine <code>server</code>, commande de build <code>npm install</code>, commande de démarrage <code>node src/server.js</code>. Variables : <code>PORT=5001</code>, <code>MONGODB_URI</code>, <code>JWT_SECRET</code>, <code>CLIENT_URL</code>.</li>
+      <li><strong>Frontend (Vercel ou Netlify)</strong> : Liez le sous-dossier <code>client</code>, commande de build <code>npm run build</code>, répertoire de sortie <code>dist</code>.</li>
+    </ul>
+
+    <h1>7. Dépannage & FAQ</h1>
+
+    <div class="callout info">
+      <div class="callout-title">❓ Erreur Port 5000 / 5001 Occupé (EADDRINUSE)</div>
+      SmartWallet utilise le port <strong>5001</strong> pour éviter les conflits avec AirPlay ou d'autres applications. Vous pouvez modifier la variable <code>PORT</code> dans <code>server/.env</code> à tout moment.
+    </div>
+
+    <div class="callout info">
+      <div class="callout-title">❓ Que faire si l'image d'un reçu est floue ?</div>
+      Tesseract.js extrait le maximum de texte possible. Si certains champs ne sont pas lisibles, SmartWallet ouvre automatiquement la <strong>modale de validation</strong> afin que vous puissiez ajuster manuellement le montant ou le commerçant avant l'enregistrement.
+    </div>
+
+    <div class="callout info">
+      <div class="callout-title">❓ L'IA peut-elle se tromper dans les calculs budgétaires ?</div>
+      <strong>Non.</strong> Tous les totaux, pourcentages et dépassements sont calculés par MongoDB et Express.js via des formules mathématiques déterministes. L'IA se contente de rédiger l'interprétation qualitative à partir de ces chiffres validés.
+    </div>
+  </div>
+
+</body>
+</html>
