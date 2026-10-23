@@ -1,0 +1,27 @@
+{
+  "name": "smartwallet-mern",
+  "version": "1.0.0",
+  "description": "SmartWallet - Personal Finance Manager (MERN Stack Edition with OCR & AI Analysis)",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "server:start": "cd server && npm start",
+    "client": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "start": "node server/src/server.js"
+  },
+  "keywords": [
+    "smartwallet",
+    "mern",
+    "mongodb",
+    "express",
+    "react",
+    "nodejs",
+    "ocr",
+    "tesseract",
+    "ai",
+    "finance"
+  ],
+  "author": "SmartWallet Team",
+  "license": "ISC"
+}
