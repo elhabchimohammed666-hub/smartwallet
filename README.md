@@ -144,19 +144,7 @@ git clone https://github.com/your-username/smartwallet2.git
 cd smartwallet2
 ```
 
-### 2. Configure Backend Environment
-```bash
-cd server
-copy .env.example .env
-```
-Edit `server/.env` with your settings:
-```env
-PORT=5001
-MONGODB_URI=mongodb://127.0.0.1:27017/smartwallet
-JWT_SECRET=smartwallet_super_secret_jwt_key_2026_finance_secure
-GEMINI_API_KEY=your_optional_gemini_api_key_here
-CLIENT_URL=http://localhost:5173
-NODE_ENV=development
+
 ```
 *(Note: If `GEMINI_API_KEY` is omitted, the built-in SmartWallet Heuristic Intelligence Engine automatically handles AI reports and receipt categorizations with zero errors!)*
 
