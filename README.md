@@ -1,3 +1,6 @@
+## License
+   © 2026 Elhabchi Mohammed. All Rights Reserved.
+
 # SmartWallet - Personal Finance Manager
 > **MERN Stack Edition (MongoDB, Express.js, React, Node.js) with Receipt OCR and AI Monthly Analysis**
 
